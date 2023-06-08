@@ -1,4 +1,4 @@
-package net.local.dddpoc.catalog.infrastructure.persistence;
+package net.local.dddpoc.catalog.infrastructure.repositories;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +14,7 @@ import net.local.dddpoc.catalog.application.domain.category.entities.Title;
 import net.local.dddpoc.catalog.application.domain.category.entities.Uri;
 import net.local.dddpoc.catalog.application.domain.category.repositories.LoadCategoryPort;
 import net.local.dddpoc.catalog.application.domain.category.repositories.SaveCategoryPort;
+import net.local.dddpoc.catalog.infrastructure.entities.CategoryJdbc;
 
 @Repository
 public class CategoryRepositoryJdbc implements LoadCategoryPort, SaveCategoryPort {
@@ -55,6 +56,4 @@ public class CategoryRepositoryJdbc implements LoadCategoryPort, SaveCategoryPor
                 new Uri((String) entry.get("uri")),
                 new Title((String) entry.get("title")));
     }
-
-    public record CategoryJdbc(CategoryId id, Uri uri, Title title) implements Category {}
 }

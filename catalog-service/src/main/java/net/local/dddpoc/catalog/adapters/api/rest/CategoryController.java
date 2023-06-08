@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.local.dddpoc.catalog.application.dto.InputCategory;
 import net.local.dddpoc.catalog.application.usecases.category.CreateCategoryUC;
-import net.local.dddpoc.catalog.application.usecases.category.CreateCategoryUC.InputCategory;
 import net.local.dddpoc.catalog.application.usecases.category.ListCateroryUC;
 
 @RestController

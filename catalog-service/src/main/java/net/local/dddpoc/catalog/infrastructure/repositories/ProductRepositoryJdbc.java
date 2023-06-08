@@ -1,4 +1,4 @@
-package net.local.dddpoc.catalog.infrastructure.persistence;
+package net.local.dddpoc.catalog.infrastructure.repositories;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +16,7 @@ import net.local.dddpoc.catalog.application.domain.product.entities.ProductId;
 import net.local.dddpoc.catalog.application.domain.product.entities.Title;
 import net.local.dddpoc.catalog.application.domain.product.repositories.LoadProductPort;
 import net.local.dddpoc.catalog.application.domain.product.repositories.SaveProductPort;
+import net.local.dddpoc.catalog.infrastructure.entities.ProductJdbc;
 
 @Repository
 public class ProductRepositoryJdbc implements LoadProductPort, SaveProductPort {
@@ -64,7 +65,4 @@ public class ProductRepositoryJdbc implements LoadProductPort, SaveProductPort {
                 new Description((String) entry.get("description")),
                 new Money(((BigDecimal) entry.get("price")).floatValue()));
     }
-
-    public record ProductJdbc(ProductId id, Title title, Description description, Money price) implements Product {}
-
 }

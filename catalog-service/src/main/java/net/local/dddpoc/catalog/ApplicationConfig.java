@@ -12,8 +12,8 @@ import net.local.dddpoc.catalog.application.usecases.category.ListCateroryUC;
 import net.local.dddpoc.catalog.application.usecases.product.CategorizeProductUC;
 import net.local.dddpoc.catalog.application.usecases.product.CreateProductUC;
 import net.local.dddpoc.catalog.application.usecases.product.ListProductUC;
-import net.local.dddpoc.catalog.infrastructure.persistence.CategoryRepositoryJdbc;
-import net.local.dddpoc.catalog.infrastructure.persistence.ProductRepositoryJdbc;
+import net.local.dddpoc.catalog.infrastructure.repositories.CategoryRepositoryJdbc;
+import net.local.dddpoc.catalog.infrastructure.repositories.ProductRepositoryJdbc;
 
 @Configuration
 public class ApplicationConfig {

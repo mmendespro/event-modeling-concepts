@@ -2,11 +2,11 @@ package net.local.dddpoc.catalog.application.usecases.category;
 
 import java.util.UUID;
 
-import net.local.dddpoc.catalog.application.domain.category.entities.Category;
 import net.local.dddpoc.catalog.application.domain.category.entities.CategoryId;
 import net.local.dddpoc.catalog.application.domain.category.entities.Title;
 import net.local.dddpoc.catalog.application.domain.category.entities.Uri;
 import net.local.dddpoc.catalog.application.domain.category.repositories.SaveCategoryPort;
+import net.local.dddpoc.catalog.application.dto.InputCategory;
 
 public class CreateCategoryUC {
     
@@ -21,6 +21,4 @@ public class CreateCategoryUC {
 
         saveCategoryPort.save(newCategory);
     }
-
-    public record InputCategory(CategoryId id, Uri uri, Title title) implements Category{} 
 }

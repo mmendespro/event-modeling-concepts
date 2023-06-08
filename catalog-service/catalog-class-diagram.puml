@@ -1,0 +1,66 @@
+@startuml 'catalog-class-diagram'
+
+    class Title {
+        - value: String
+    }
+
+    class Uri {
+        - value: String
+    }
+
+    class CategoryId {
+        - categoryId: String
+    }
+
+    interface Category {
+        + CategoryId categoryId()
+        + Title title()
+        + Uri uri()
+    }
+
+    class CategoryJdbc implements Category {
+        - categoryId: CategoryId
+        - title: Title
+        - uri: Uri
+    }
+
+    class InputCategory implements Category {
+        - categoryId: CategoryId
+        - title: Title
+        - uri: Uri
+    }
+
+    interface LoadCategoryPort {
+        + loadAll(): Stream<Category>
+        + loadById(CategoryId categoryId): Optional<Category>
+    }
+
+    interface SaveCategoryPort {
+        + save(Category category)
+    }
+
+    class CategoryRepositoryJdbc implements LoadCategoryPort, SaveCategoryPort {
+        + loadAll(): Stream<Category>
+        + loadById(CategoryId categoryId): Optional<Category>
+        + save(Category category)
+    }
+
+    class ListCateroryUC {
+        + execute(): Stream<Category>
+    }
+
+    class CreateCategoryUC {
+        + execute(String title, String uri)
+    }
+
+    Category -up- CategoryId
+    Category -up- Title
+    Category -up- Uri
+
+    ListCateroryUC -left- Category
+    ListCateroryUC -- LoadCategoryPort
+    CreateCategoryUC -up- InputCategory
+    CreateCategoryUC -- SaveCategoryPort
+
+    CategoryRepositoryJdbc -left- CategoryJdbc
+@enduml
