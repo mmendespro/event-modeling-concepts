@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import net.local.dddpoc.catalog.application.usecases.category.CreateCategoryUC;
-import net.local.dddpoc.catalog.application.usecases.category.ListCateroryUC;
-import net.local.dddpoc.catalog.application.usecases.product.CategorizeProductUC;
-import net.local.dddpoc.catalog.application.usecases.product.CreateProductUC;
-import net.local.dddpoc.catalog.application.usecases.product.ListProductUC;
-import net.local.dddpoc.catalog.infrastructure.repositories.CategoryRepositoryJdbc;
-import net.local.dddpoc.catalog.infrastructure.repositories.ProductRepositoryJdbc;
+import net.local.dddpoc.catalog.adapters.outbound.databases.jdbc.respositories.CategoryRepositoryJdbc;
+import net.local.dddpoc.catalog.adapters.outbound.databases.jdbc.respositories.ProductRepositoryJdbc;
+import net.local.dddpoc.catalog.application.ports.inbound.CategorizeProductUC;
+import net.local.dddpoc.catalog.application.ports.inbound.CreateCategoryUC;
+import net.local.dddpoc.catalog.application.ports.inbound.CreateProductUC;
+import net.local.dddpoc.catalog.application.ports.inbound.ListCateroryUC;
+import net.local.dddpoc.catalog.application.ports.inbound.ListProductUC;
 
 @Configuration
 public class ApplicationConfig {
