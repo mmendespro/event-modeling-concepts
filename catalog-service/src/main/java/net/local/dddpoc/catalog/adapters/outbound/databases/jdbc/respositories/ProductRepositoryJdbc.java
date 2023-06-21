@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import net.local.dddpoc.catalog.adapters.outbound.databases.jdbc.entities.ProductJdbc;
+import net.local.dddpoc.catalog.application.domain.category.CategoryId;
 import net.local.dddpoc.catalog.application.domain.primitives.Description;
 import net.local.dddpoc.catalog.application.domain.primitives.Money;
 import net.local.dddpoc.catalog.application.domain.primitives.Title;
@@ -23,6 +24,7 @@ public class ProductRepositoryJdbc implements LoadProductPort, SaveProductPort {
     
     private final String QRY_LOAD_ALL = "select * from products ";
     private final String QRY_LOAD_BYID = "select * from products where productId = ?";
+    private final String QRY_LOAD_BYCATEGORY = "select p.* from products p, products_in_categories pc where p.productId = pc.product_id and pc.category_id = ?";
     private final String QRY_INSERT = "INSERT INTO products VALUES (?, ?, ?, ?)";
     private final String QRY_UPDATE = "UPDATE products SET title = ?, description, price = ? where productId = ?";
     private final String QRY_CATEGORIZE = "INSERT INTO products_in_categories VALUES(?, ?)";
@@ -36,6 +38,11 @@ public class ProductRepositoryJdbc implements LoadProductPort, SaveProductPort {
     @Override
     public Stream<Product> findAll() {
         return jdbcTemplate.queryForList(QRY_LOAD_ALL.concat(" ORDER BY 1")).stream().map(this::toProduct);
+    }
+
+    @Override
+    public Stream<Product> findByCategory(CategoryId categoryId) {
+        return jdbcTemplate.queryForList(QRY_LOAD_BYCATEGORY.concat(" ORDER BY 1"), categoryId.value()).stream().map(this::toProduct);
     }
 
     @Override

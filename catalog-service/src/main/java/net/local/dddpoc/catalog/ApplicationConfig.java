@@ -14,6 +14,7 @@ import net.local.dddpoc.catalog.application.ports.inbound.CreateCategoryUC;
 import net.local.dddpoc.catalog.application.ports.inbound.CreateProductUC;
 import net.local.dddpoc.catalog.application.ports.inbound.ListCateroryUC;
 import net.local.dddpoc.catalog.application.ports.inbound.ListProductUC;
+import net.local.dddpoc.catalog.application.ports.inbound.ProductByCategoryUC;
 
 @Configuration
 public class ApplicationConfig {
@@ -49,5 +50,10 @@ public class ApplicationConfig {
     @Bean
     public CategorizeProductUC categorizeProductUC(ProductRepositoryJdbc repository) {
         return new CategorizeProductUC(repository, repository);
+    }
+
+    @Bean
+    public ProductByCategoryUC productByCategoryUC (ProductRepositoryJdbc repository) {
+        return new ProductByCategoryUC(repository);
     }
 }
